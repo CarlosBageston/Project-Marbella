@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Picolé de Açai",
+    "SubTitle": "Açai artesanal, o verdadeiro picolé de açai você só encontra aqui",
+    "description": "Pioneiro no picolé de açai em dois vizinhos e região, temos diversos picoles de açai com muito recheiro, recheios estes que variam entre NUTELLA, LEITE CONDENSADO, PAÇOCA e muito mais... ",
+    "photo": "../../src/assets/PicoleAcai.png",
+    "id": 1
+  },
+  {
+    "title": "Pote de sorvete",
+    "SubTitle": "Pote escepcional com diversos sabores com pedaços da fruta",
+    "description": "Potes de sorvetes de diversos tamanhos e sabores. Sabores de sorvete com diferencial, pois sabores de frutas vem com pedaços da fruta e sabores de bolachas tambem acompanha peças da propria bolacha. ",
+    "photo": "../../src/assets/pote.png",
+    "id": 2
+  }
+]
