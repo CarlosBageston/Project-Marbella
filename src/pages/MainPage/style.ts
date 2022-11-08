@@ -78,14 +78,14 @@ border-bottom: 5px dashed #122738;
 
 @media ( (min-width: 381px) and (max-width: 450px)) {
     height: 94vh;
-    padding: 10px;
+    padding: 11px;
     width: 80%;
     margin-left: 0;
 
     &::before{
     margin-top: -13px;
     height: 70%;
-    margin-left: 45%;
+    margin-left: 44%;
     border-right: 5px dashed #122738;
     border-bottom: none;
 

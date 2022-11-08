@@ -18,7 +18,8 @@ import {
     Button,
     SendSucess,
     SendError,
-    DivResponse
+    DivResponse,
+    ImageBackground
 } from './style';
 import Instagram from '../../assets/instagram.png';
 import Facebook from '../../assets/facebook.png';
@@ -29,7 +30,7 @@ import useObserver from '../../hooks/useObserver';
 import InputMask from '../../components/inputMask';
 import { useState } from 'react';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import React from 'react';
+import background from '../../assets/fundo.jpg';
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string().email('este não é um e-mail valido').required('este é um campo obrigatorio'),
@@ -49,6 +50,7 @@ export default function Pedidos() {
 
     return (
         <Box >
+            <ImageBackground src={background} alt="fundo" />
             <ContainerLeft ref={myRef} isVisibleStyle={isVisible}>
                 <TitleLeft>Nos acompanhe</TitleLeft>
                 <TitleDown>nas redes sociais</TitleDown>

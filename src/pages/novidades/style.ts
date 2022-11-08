@@ -62,7 +62,7 @@ height: 50vh;
 
 export const Content = styled.div<Props>`
 display: flex;
-margin-top: -13rem;
+margin-top: -6rem;
 
 ${props => props.isVisibleStyle && css`
       animation: slide-in-blurred-left 0.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) 0.5s both;
@@ -92,7 +92,7 @@ ${props => props.isVisibleStyle && css`
 export const ContentEdit = styled.div<Props>`
 display: flex;
 position: absolute;
-margin-top: 10rem;
+margin-top: 16rem;
 margin-left: 4rem;
 
 ${props => props.isVisibleStyle && css `

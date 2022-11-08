@@ -2,17 +2,23 @@ import styled, { css } from 'styled-components';
 import { Props } from '../../types/styleIsVisible';
 
 export const Box = styled.div`
-background-image: url('../../../src/assets/fundo.jpg') ;
 height: 100vh;
 width: 100%;
 display: flex;
 align-items: center;
 justify-content: space-evenly;
+position: relative;
 
 @media (max-width: 1024px) {
   flex-direction: column;
   height: 100%;
 }
+`;
+
+export const ImageBackground = styled.img`
+position: absolute;
+width: 100%;
+height: 100%;
 `;
 
 export const ContainerLeft = styled.div<Props>`
