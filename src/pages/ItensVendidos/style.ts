@@ -50,7 +50,7 @@ font-family: 'Rochester';
 
 export const BoxLeft = styled.div<Props>`
 width: 640px;
-height: 470px;
+height: 471px;
 background-color: #F2F2F2;
 display: flex;
 align-items: center;
