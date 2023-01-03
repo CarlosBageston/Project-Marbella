@@ -36,6 +36,7 @@ align-items: center;
 export const Title = styled.h1`
 background: linear-gradient(to bottom left,#ffe000 0%,#ffd183 100%);
 -webkit-background-clip: text;
+background-clip: text;
 -webkit-text-fill-color: transparent;
 font-size: 62px;
 text-align: center;

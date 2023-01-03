@@ -36,6 +36,7 @@ font-family: Rochester;
 font-weight: 400;
 background: linear-gradient(to bottom left,#ffe000 0%,#ffd183 100%);
 -webkit-background-clip: text;
+background-clip: text;
 -webkit-text-fill-color: transparent;
 padding-top: 48px;
 
