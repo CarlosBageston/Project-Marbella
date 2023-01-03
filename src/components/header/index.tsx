@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import Logo from '../../assets/Logo.png';
-import Admin from '../../assets/iconAdmin.png';
-import Facebook from '../../assets/facebook.png';
-import Instagram from '../../assets/instagram.png';
-import AdminPink from '../../assets/iconAdminPink.png';
+import Admin from '../../assets/admin.png';
+import Facebook from '../../assets/facebook-color.png';
+import Instagram from '../../assets/instagram-color.png';
+import Whatsapp from '../../assets/whatsapp-color.png';
 import { Outlet, useNavigate } from 'react-router-dom';
-import FacebookPink from '../../assets/facebookpink.png';
-import InstagramPink from '../../assets/instagrampink.png';
+import { useAuth } from '../../hooks/auth/index';
 import {
     Container,
     BoxRight,
@@ -25,10 +24,8 @@ import {
 
 export default function Header() {
 
-    const [changeImgInsta, setChangeImgInsta] = useState(false);
-    const [changeImgFace, setChangeImgFace] = useState(false);
-    const [changeImgAdmin, setChangeImgAdmin] = useState(false);
     const [checkBox, setCheckBox] = useState(false);
+    const { logado } = useAuth();
 
     const navigate = useNavigate();
 
@@ -48,7 +45,10 @@ export default function Header() {
     const showRoutesNavigate = () => {
         setCheckBox(!checkBox);
 
-        navigate('Admin');
+        if (logado !== null) {
+            navigate('/admin/report');
+        } else navigate('/admin');
+
     };
 
     return (
@@ -65,60 +65,18 @@ export default function Header() {
                             </li>
                         ))}
                     </BoxUl>
-                    {
-                        changeImgInsta === false ?
-                            <>
-                                <ImageIcone href="https://www.instagram.com/marbellasorvetes/"
-                                    onMouseMove={() => setChangeImgInsta(true)}
-                                >
-                                    < img src={Instagram} alt="instagram" width={45} />
-                                </ImageIcone>
-                            </>
-                            :
-                            <>
-                                <ImageIcone href="https://www.instagram.com/marbellasorvetes/"
-                                    onMouseOut={() => setChangeImgInsta(false)}
-                                >
-                                    < img src={InstagramPink} alt="instagram" width={45} />
-                                </ImageIcone>
-                            </>
-                    }
-                    {
-                        changeImgFace === false ?
-                            <>
-                                <ImageIcone
-                                    href="https://www.facebook.com/marbella.sorvetes"
-                                    onMouseMove={() => setChangeImgFace(true)}
-                                >
-                                    <img src={Facebook} alt="facebook" width={45} />
-                                </ImageIcone>
-                            </>
-                            :
-                            <>
-                                <ImageIcone
-                                    href="https://www.facebook.com/marbella.sorvetes"
-                                    onMouseOut={() => setChangeImgFace(false)}
-                                >
-                                    <img src={FacebookPink} alt="facebook" width={45} />
-                                </ImageIcone>
-                            </>
-                    }
-                    {
-                        changeImgAdmin === false ?
-                            <>
-                                <ImageIcone>
-                                    <IconAdmin src={Admin} alt="admin" onMouseMove={() => setChangeImgAdmin(true)} />
-                                </ImageIcone>
-                            </>
-                            :
-                            <>
-                                <ImageIcone>
-                                    <IconAdmin src={AdminPink} alt="admin"
-                                        onMouseOut={() => setChangeImgAdmin(false)} onClick={() => navigate('Admin')}
-                                    />
-                                </ImageIcone>
-                            </>
-                    }
+                    <ImageIcone href="https://www.facebook.com/marbella.sorvetes">
+                        <img src={Facebook} alt="facebook" width={32} />
+                    </ImageIcone>
+                    <ImageIcone href="https://www.instagram.com/marbellasorvetes/">
+                        < img src={Instagram} alt="instagram" width={36} />
+                    </ImageIcone>
+                    <ImageIcone href="https://api.whatsapp.com/send?phone=5546999334241&text=Ol%C3%A1%20!%20%F0%9F%98%84">
+                        <img src={Whatsapp} alt="whatsapp" width={39} />
+                    </ImageIcone>
+                    <ImageIcone>
+                        <IconAdmin src={Admin} alt="admin" onClick={showRoutesNavigate} />
+                    </ImageIcone>
                 </BoxRight>
             </Container>
             <ContainerDown>
@@ -145,10 +103,7 @@ export default function Header() {
                                     < img src={Instagram} alt="instagram" width={45} />
                                     Instagram
                                 </ImageIcone>
-                                <ImageIcone
-                                    href="https://www.facebook.com/marbella.sorvetes"
-                                    onMouseMove={() => setChangeImgFace(true)}
-                                >
+                                <ImageIcone href="https://www.facebook.com/marbella.sorvetes">
                                     <img src={Facebook} alt="facebook" width={45} />
                                     Facebook
                                 </ImageIcone>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Container = styled.div`
-width: 1000px;
+width: 80%;
 height: 700px;
 display: flex;
 flex-direction: column;
@@ -55,11 +55,9 @@ color: #4f4f4ffc;
 export const Response = styled.p`
 color: black;
 border-bottom: 1px solid black;
-width: 950px;
 `;
 export const ResponseMsg = styled.p`
 color: black;
-width: 950px;
 `;
 export const Mensagem = styled.p`
 margin-bottom: 20px;

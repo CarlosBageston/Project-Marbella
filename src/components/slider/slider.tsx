@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { SwiperDefault } from './style';
-import useGetDocs from '../../hooks/useGetDocs';
+import useGetDocs from '../../hooks/useCRUD';
 
 
 interface PropsSlider {

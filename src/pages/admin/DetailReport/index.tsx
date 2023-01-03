@@ -1,18 +1,17 @@
 import { Box } from '../Report/style';
 import { Container, DivResult, Response, Mensagem, ResponseMsg, Button, DivButton, Label } from './style';
-import useGetDocs from '../../../hooks/useGetDocs';
+import useCRUD from '../../../hooks/useCRUD';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../../config';
 import { doc, updateDoc } from 'firebase/firestore';
 import EmailIcon from '@mui/icons-material/Email';
 import Drafts from '@mui/icons-material/Drafts';
 import { useState } from 'react';
-import React from 'react';
 
 export default function DetailReport() {
 
     const navigate = useNavigate();
-    const { relatoId } = useGetDocs();
+    const { relatoId } = useCRUD();
     const [isOpen, setIsOpen] = useState(false);
 
     const atualizando = async () => {
@@ -27,7 +26,6 @@ export default function DetailReport() {
         }
     };
 
-    console.log(relatoId?.id);
 
     return (
         <>
@@ -58,7 +56,7 @@ export default function DetailReport() {
                     </DivResult>
                     <DivResult>
                         <Label>Telefone:</Label>
-                        <Response key={relatoId?.id}>{relatoId?.telefone}</Response>
+                        <Response key={relatoId?.id}>{relatoId?.telefone.replace(/\D/g, '').replace(/^(\d\d)(\d{5})(\d{4}).*/, '($1) $2-$3')}</Response>
                     </DivResult>
                     <DivResult>
                         <Label>E-mail:</Label>

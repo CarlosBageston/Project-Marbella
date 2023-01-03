@@ -3,10 +3,11 @@ import logo from '../../assets/Logo.png';
 import React from 'react';
 
 export default function Footer() {
+
     return (
         <>
-            <Box>
-                <div>
+            <Box >
+                <div >
                     <Text>&copy; 2022 - Sorveteria Marbella | Todos os direitos reservados</Text>
                     <Text style={{ marginBottom: 0 }}>Criação do site - Carlos Eduardo Bageston</Text>
                 </div>

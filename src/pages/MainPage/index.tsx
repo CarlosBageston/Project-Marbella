@@ -1,21 +1,20 @@
 import Slider from '../../components/slider/slider';
 import { SwiperProps, SwiperSlide } from 'swiper/react';
-import { Container, ImageSlider, Box, BoxSlider, NameEmpresa, TextTitle, Descrition, Walcome, BoxSpinner } from './style';
+import { Container, ImageSlider, Box, BoxSlider, NameEmpresa, TextTitle, Descrition, BoxSpinner } from './style';
 import CircularProgress from '@mui/material/CircularProgress';
-import useGetDocs from '../../hooks/useGetDocs';
-import React from 'react';
+import useCRUD from '../../hooks/useCRUD';
 
 export default function MainPage() {
-    const { carrossel, loading } = useGetDocs();
+    const { carrossel, loading } = useCRUD();
 
     const settings: SwiperProps = {
         spaceBetween: 50,
         slidesPerView: 1,
-        navigation: true,
-        autoplay: {
-            delay: 5000,
-        },
-        loop: true,
+        // navigation: true,
+        // autoplay: {
+        //     delay: 5000,
+        // },
+        // loop: true,
         breakpoints: {
             640: {
                 slidesPerView: 1
@@ -33,7 +32,6 @@ export default function MainPage() {
                                     <SwiperSlide key={item.id}>
                                         <Container>
                                             <BoxSlider>
-                                                <Walcome >Bem vindo(a) a melhor sorveteria de dois vizinhos e região</Walcome>
                                                 <NameEmpresa >Marbella Sorvetes</NameEmpresa>
                                                 <TextTitle>
                                                     {item.subtitle}

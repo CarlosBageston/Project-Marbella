@@ -2,9 +2,21 @@ import styled, { css } from 'styled-components';
 import { Props } from '../../types/styleIsVisible';
 
 export const Box = styled.div`
-background-color: ${props => props.theme.paletteColor.background};
+background-image: linear-gradient(to left top, #f96048, #f95b42, #f9563d, #f95137, #f94b31);
 height: 100vh;
 width: 100%;
+
+/* &::before {
+    content: '';
+    display: block;
+    background-image: url('../../../src/assets/transition-novidades.svg');
+    width: 100%;
+    padding-top: 4.83%;
+    position: fixed;
+    z-index: 1;
+    background-size: cover;
+    margin-top: 710px;
+} */
 
 @media (max-width: 1400px) {
       height: 100%
@@ -19,20 +31,25 @@ export const ContainerTitle = styled.div`
 `;
 
 export const Title = styled.h1`
-font-size: 128px;
+font-size: 118px;
 font-family: Rochester;
 font-weight: 400;
-color: ${props => props.theme.paletteColor.yellow};
+background: linear-gradient(to bottom left,#ffe000 0%,#ffd183 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+padding-top: 48px;
 
 @media (max-width: 1400px) {
       font-size: 80px;
 }
 `;
 export const Subtitle = styled.h2`
-font-size: 40px;
+font-size: 32px;
 margin-right: 13rem;
 margin-top: -10px;
 font-family: Rochester;
+color: #fff;
+text-shadow: 3px 3px 2px #000;
 
 @media (max-width: 1400px) {
       margin-right: 7rem;
@@ -145,6 +162,8 @@ font-size: 40px;
 width: 13rem;
 padding-left: 8px;
 margin-top: -10px;
+color: #fff;
+text-shadow: 3px 3px 2px #000;
 
 @media (max-width: 1400px) {
       font-size: 30px;
@@ -157,6 +176,8 @@ font-family: 'Rochester';
 font-size: 40px;
 width: 14rem;
 margin-top: 4rem;
+color: #fff;
+text-shadow: 3px 3px 2px #000;
 
 @media (max-width: 1400px) {
       font-size: 30px;

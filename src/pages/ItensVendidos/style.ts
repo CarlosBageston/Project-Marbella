@@ -2,9 +2,21 @@ import styled, { css } from 'styled-components';
 import { Props } from '../../types/styleIsVisible';
 
 export const Box = styled.div`
-background-color: #fdf5fa;
+background-image: linear-gradient(to right top, #fb2e6b, #fa2663, #f91d5b, #f71253, #f5014b);
 height: 100vh;
 width: 100%;
+
+/* &::before {
+    content: '';
+    display: block;
+    background-image: url('../../../src/assets/transition-itens-vendidos.svg');
+    width: 100%;
+    padding-top: 4.83%;
+    position: fixed;
+    z-index: 1;
+    background-size: cover;
+    margin-top: 710px;
+} */
 
 @media (max-width: 1400px) {
       height: 100%
@@ -22,10 +34,12 @@ align-items: center;
 `;
 
 export const Title = styled.h1`
-color: ${props => props.theme.paletteColor.yellow};
+background: linear-gradient(to bottom left,#ffe000 0%,#ffd183 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 font-size: 62px;
 text-align: center;
-padding: 48px 0px;
+padding: 66px 0px 24px;
 font-family: 'Rochester';
 
 @media(max-width: 1400px) {
@@ -35,7 +49,7 @@ font-family: 'Rochester';
 
 export const BoxLeft = styled.div<Props>`
 width: 640px;
-height: 600px;
+height: 470px;
 background-color: #F2F2F2;
 display: flex;
 align-items: center;

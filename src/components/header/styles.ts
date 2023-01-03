@@ -64,7 +64,7 @@ transform: rotate(345deg);
 `;
 
 export const ImageIcone = styled.a `
-margin-right: 8px;
+margin-right: 12px;
 
 &::after{
     display: block;
@@ -94,8 +94,7 @@ margin-right: 8px;
 
 export const IconAdmin = styled.img`
 cursor: pointer;
-width: 45px;
-height: 50px;
+width: 37px;
 
 &::after{
     display: block;
