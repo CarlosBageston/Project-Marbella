@@ -16,7 +16,6 @@ import AcaiCrocante from '../../assets/acaiCrocante.png';
 import Paleta from '../../assets/paletaninho.jpg';
 import PaletaMorango from '../../assets/paleta.png';
 import useObserver from '../../hooks/useObserver';
-import React from 'react';
 
 
 export default function Novidades() {
@@ -41,7 +40,7 @@ export default function Novidades() {
                 </BoxItems>
                 <BoxItems>
                     <Content style={{ marginLeft: '0.5rem' }} isVisibleStyle={isVisible}>
-                        <ParagraphDown>Picolé de açaí com cobertura crocante de ovomaltine</ParagraphDown>
+                        <ParagraphDown>Picolé de açaí com cobertura crocante de cookies</ParagraphDown>
                         <Image src={AcaiCrocante} alt="Picole Skimo" />
                     </Content>
                     <ContentEdit isVisibleStyle={isVisible}>

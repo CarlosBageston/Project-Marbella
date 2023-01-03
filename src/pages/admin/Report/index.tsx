@@ -1,13 +1,12 @@
-import { Ul, Li, Box, LinkNav, EditButton, LiRead } from './style';
-import useGetDocs from '../../../hooks/useGetDocs';
+import { Ul, Li, Box, LinkNav, EditButton, LiRead, DivList, DivCircle } from './style';
+import useCRUD from '../../../hooks/useCRUD';
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import EmailIcon from '@mui/icons-material/Email';
 import Drafts from '@mui/icons-material/Drafts';
-import React from 'react';
 
 export default function Report() {
-    const { allRelatory, loadingRelato } = useGetDocs();
+    const { allRelatory, loadingRelato } = useCRUD();
     const navigate = useNavigate();
 
     return (
@@ -17,27 +16,29 @@ export default function Report() {
                     Editar tela inicial
                 </EditButton>
                 {loadingRelato ?
-                    <div>
+                    <DivCircle>
                         <CircularProgress size={80} />
-                    </div>
+                    </DivCircle>
                     :
                     (
                         <>
                             {allRelatory.length === 0 ? <p>Não tem nenhuma mensagem</p> :
-                                <Ul>
-                                    {allRelatory.map(info => (
-                                        <LinkNav to={`detailreport/${info.id}`} key={info.id}>
-                                            {info.readMessage ?
-                                                <>
-                                                    <LiRead><Drafts />Mensagem lida de {info.nome}</LiRead>
-                                                </> :
-                                                <>
-                                                    <Li><EmailIcon />Nova mensagem de {info.nome}</Li>
-                                                </>
-                                            }
-                                        </LinkNav>
-                                    ))}
-                                </Ul>
+                                <DivList>
+                                    <Ul>
+                                        {allRelatory.map(info => (
+                                            <LinkNav to={`detailreport/${info.id}`} key={info.id}>
+                                                {info.readMessage ?
+                                                    <>
+                                                        <LiRead><Drafts />Mensagem lida de {info.nome}</LiRead>
+                                                    </> :
+                                                    <>
+                                                        <Li><EmailIcon />Nova mensagem de {info.nome}</Li>
+                                                    </>
+                                                }
+                                            </LinkNav>
+                                        ))}
+                                    </Ul>
+                                </DivList>
                             }
                         </>
                     )}

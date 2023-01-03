@@ -1,3 +1,12 @@
+import Instagram from '../../assets/instagram.png';
+import Facebook from '../../assets/facebook.png';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import CreateRelatoController from '../../controller/CreateRelatory';
+import useObserver from '../../hooks/useObserver';
+import { useState } from 'react';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import background from '../../assets/fundo.jpg';
 import {
     Box,
     ContainerLeft,
@@ -21,16 +30,6 @@ import {
     DivResponse,
     ImageBackground
 } from './style';
-import Instagram from '../../assets/instagram.png';
-import Facebook from '../../assets/facebook.png';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import CreateRelatoController from '../../controller/CreateRelatory';
-import useObserver from '../../hooks/useObserver';
-import InputMask from '../../components/inputMask';
-import { useState } from 'react';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import background from '../../assets/fundo.jpg';
 
 const SignupSchema = Yup.object().shape({
     email: Yup.string().email('este não é um e-mail valido').required('este é um campo obrigatorio'),
@@ -96,10 +95,10 @@ export default function Pedidos() {
                                     value={values.nome}
                                     placeholder='nome'
                                 />
-                                <InputMask
+                                <Input
                                     onChange={handleChange('telefone')}
                                     onBlur={handleBlur('telefone')}
-                                    value={values.telefone}
+                                    value={values.telefone.replace(/\D/g, '').replace(/^(\d\d)(\d{5})(\d{4}).*/, '($1) $2-$3')}
                                     placeholder='telefone'
                                 />
                             </DivInputUp>
@@ -140,9 +139,7 @@ export default function Pedidos() {
                                         null
                                 }
                             </DivResponse>
-
                         </>
-
                     )}
                 </Formik>
             </ContainerRight>

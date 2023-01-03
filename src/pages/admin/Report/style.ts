@@ -22,8 +22,22 @@ margin-left: 64%;
 }
 `;
 
-export const Ul = styled.ul`
+export const DivCircle = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 67vh;
+`;
+
+export const DivList = styled.div`
 width: 70%;
+height: 67vh;
+overflow-y: auto;
+`;
+
+export const Ul = styled.ul`
+width: 100%;
 display: flex;
 justify-content: center;
 flex-direction: column;

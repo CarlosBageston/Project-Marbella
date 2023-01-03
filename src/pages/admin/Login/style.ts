@@ -15,6 +15,7 @@ background-image: linear-gradient(to left top, #78a7ee, #a796e9, #d47fd0, #f26aa
 `;
 
 export const Image = styled.img`
+ width: 400px;
 margin-top: 280px;
 position: absolute;
 bottom: 0;
@@ -42,8 +43,8 @@ transition: animation .4s;
 `;
 
 export const Container = styled.div`
-width: 500px;
-height: 500px;
+width: 400px;
+height: 400px;
 display: flex;
 align-items: center;
 flex-direction: column;
@@ -93,7 +94,7 @@ border: none;
 border-radius: 24px;
 background: #ffffff6b;
 height: 44px;
-width: 350px;
+width: 100%;
 margin-top: 40px;
 padding: 16px;
 outline: none;

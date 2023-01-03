@@ -6,9 +6,9 @@ import { useAuth } from '.';
 
 export default function PrivateRoute() {
     const { logado } = useAuth();
-    if (!logado) {
+    if (logado === null) {
         return <Admin />;
-    }
+    } else return <Outlet />;
 
-    return <Outlet />;
+
 }

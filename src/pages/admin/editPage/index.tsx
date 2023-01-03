@@ -1,6 +1,4 @@
-import React from 'react';
 import { Box } from '../Report/style';
-import { BoxButton, ButtonCarrossel, BoxForm, BoxMui, BoxDelete, TextDelete, ContainerDelete } from './style';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -9,47 +7,90 @@ import SendIcon from '@mui/icons-material/Send';
 import { LoadingButton } from '@mui/lab';
 import SaveIcon from '@mui/icons-material/Save';
 import DeleteIcon from '@mui/icons-material/Delete';
-import useGetDocs from '../../../hooks/useGetDocs';
-import useLogicEditPage from './logic';
+import useCRUD from '../../../hooks/useCRUD';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+    BoxButton,
+    ButtonCarrossel,
+    BoxForm,
+    BoxMui,
+    BoxDelete,
+    TextDelete,
+    ContainerDelete,
+    BackButton,
+    SelectImage
+} from './style';
 
 
 export default function EditPage() {
 
-    const { carrossel } = useGetDocs();
+    const navigate = useNavigate();
+    const [ShowCreate, setShowCreate] = useState<boolean>(false);
+    const [ShowEdit, setShowEdit] = useState<boolean>(false);
+
     const {
-        ShowComponentCreate,
-        ShowComponentEdit,
-        ShowCreate,
-        ShowEdit,
         addAdmin,
         base64img,
-        deleteDocument,
-        description,
         setDescription,
-        setSubtitle,
+        description,
         subtitle,
+        setSubtitle,
         updateData,
         uploadLoading,
-    } = useLogicEditPage();
+        isSelectImage,
+        carrossel,
+        loading,
+        deleteDocument,
+        setUrl
+    } = useCRUD();
+
+    //atualiza o estado da janela de criar novo slide para vazio
+    useEffect(() => {
+        setDescription('');
+        setSubtitle('');
+        setUrl('');
+    }, [ShowCreate]);
+
+    const ShowComponentCreate = () => {
+        setShowCreate(!ShowCreate);
+        setShowEdit(false);
+    };
+
+    const ShowComponentEdit = () => {
+        setShowEdit(!ShowEdit);
+        setShowCreate(false);
+    };
+
 
     return (
         <Box>
             <BoxButton>
                 <div>
-                    <ButtonCarrossel onClick={ShowComponentEdit}>Editar Carrossel</ButtonCarrossel>
+                    <BackButton onClick={() => navigate(-1)}>
+                        {'< Voltar'}
+                    </BackButton>
+                </div>
+                <div>
+                    {loading ?
+                        <CircularProgress size={20} />
+                        :
+                        <ButtonCarrossel onClick={ShowComponentEdit}>Editar Carrossel</ButtonCarrossel>
+                    }
                 </div>
                 <div>
                     <ButtonCarrossel onClick={ShowComponentCreate}>Criar novo Carrossel</ButtonCarrossel>
                 </div>
             </BoxButton>
-
-            {ShowCreate && !ShowEdit ?
+            {ShowCreate ?
                 <BoxMui>
-                    <form method='POST'>
+                    <form >
                         <BoxForm>
                             <div style={{ width: '80%' }}>
                                 <TextField
-                                    id="standard-basic"
+                                    id="title"
+                                    type='text'
                                     label="Escreva um titulo"
                                     variant="standard"
                                     required
@@ -60,7 +101,8 @@ export default function EditPage() {
                             </div>
                             <div style={{ width: '80%' }}>
                                 <TextField
-                                    id="standard-basic"
+                                    id="description"
+                                    type='text'
                                     label="Escreva uma descrição"
                                     variant="standard"
                                     required
@@ -85,6 +127,14 @@ export default function EditPage() {
                                         onChange={(e) => base64img(e)}
                                         required />
                                     <PhotoCamera />
+                                    {isSelectImage ?
+                                        <>
+                                            <SelectImage>Imagem Selecionada 😃</SelectImage>
+                                        </>
+                                        :
+                                        <>
+                                            <SelectImage>Por favor, selecione uma imagem</SelectImage>
+                                        </>}
                                 </IconButton>
                             </div>
                             <div>
@@ -113,9 +163,9 @@ export default function EditPage() {
                 :
                 ShowEdit ? carrossel.map(item =>
                     <>
-                        <BoxMui key={item.id}>
-                            <form method='POST'>
-                                <BoxForm>
+                        <BoxMui>
+                            <form>
+                                <BoxForm key={item.id}>
                                     <ContainerDelete>
                                         <BoxDelete>
                                             <TextDelete onClick={() => deleteDocument(item.id)}>deletar slide </TextDelete>
@@ -124,24 +174,27 @@ export default function EditPage() {
                                     </ContainerDelete>
                                     <div style={{ width: '80%' }}>
                                         <TextField
-                                            id="standard-basic"
+                                            id="subtitle"
+                                            type='text'
                                             label="Escreva um titulo"
                                             variant="standard"
-                                            required
-                                            onChange={(e) => setSubtitle(e.target.value)}
-                                            defaultValue={item.subtitle}
+                                            onChange={(e) => setSubtitle(item.subtitle + e.target.value)}
+                                            defaultValue={item.subtitle ?? ''}
                                             style={{ width: '100%' }}
+                                            required
                                         />
                                     </div>
                                     <div style={{ width: '80%' }}>
                                         <TextField
-                                            id="standard-basic"
+                                            id="description"
+                                            name='description'
+                                            type='text'
                                             label="Escreva uma descrição"
                                             variant="standard"
-                                            required
-                                            onChange={(e) => setDescription(e.target.value)}
-                                            defaultValue={item.description}
+                                            onChange={(e) => setDescription(item.description + e.target.value)}
+                                            defaultValue={item.description ?? ''}
                                             style={{ width: '100%' }}
+                                            required
                                         />
                                     </div>
                                     <div style={{ width: '80%', display: 'flex', alignItems: 'center' }}>
@@ -160,6 +213,14 @@ export default function EditPage() {
                                                 onChange={(e) => base64img(e)}
                                                 required />
                                             <PhotoCamera />
+                                            {isSelectImage || item.url ?
+                                                <>
+                                                    <SelectImage>Imagem Selecionada 😃</SelectImage>
+                                                </>
+                                                :
+                                                <>
+                                                    <SelectImage>Por favor, selecione uma imagem</SelectImage>
+                                                </>}
                                         </IconButton>
                                     </div>
                                     <div>
@@ -193,7 +254,7 @@ export default function EditPage() {
                     </>
                 )
                     :
-                    null
+                    <div style={{ height: '68.2vh' }}></div>
             }
         </Box>
     );
